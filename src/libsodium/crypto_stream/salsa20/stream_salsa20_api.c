@@ -1,4 +1,5 @@
 #include "crypto_stream_salsa20.h"
+#include "stream_salsa20.h"
 
 size_t
 crypto_stream_salsa20_keybytes(void) {
@@ -15,5 +16,10 @@ crypto_stream_salsa20_xor(unsigned char *c, const unsigned char *m,
                           unsigned long long mlen, const unsigned char *n,
                           const unsigned char *k)
 {
-    return crypto_stream_salsa20_xor_ic(c, m, mlen, n, 0U, k);
+    return impl->crypto_stream_salsa20_xor_ic(c, m, mlen, n, 0U, k);
+}
+
+int _crypto_stream_salsa20_pick_best_implementation(void)
+{
+
 }
